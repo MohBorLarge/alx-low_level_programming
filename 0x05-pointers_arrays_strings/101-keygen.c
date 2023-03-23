@@ -1,39 +1,33 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include <time.h>
-#include <math.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+#define TARGET 0xad4
+#define MAX 0x5A
+#define MIN 0x40
 
 /**
- * main - print password.
+ * main - generate keygen
  *
- * Return: 0.
+ * Return: 0 always
  */
-
 int main(void)
 {
-	int ascii = 2772, i = 0, j, random;
-	char password[100];
-	time_t t;
+        int checksum = 0;
 
-	srand((int) time(&t));
-	while (ascii > 126)
-	{
-		random = rand() % 126;
-		password[i] = random;
-		ascii -= random;
-		i++;
-	}
-	if (ascii > 0)
-		password[i] = ascii;
-	else
-	{
-		i--;
-	}
-	
+        srand(time(NULL));
 
-	for (j = 0; j <= i; j++)
-	{
-		printf("%c", password[j]);
-	}
+        while ( checksum != TARGET )
+        {
+                char random_char = rand() % (MAX - MIN + 1) + MIN;
+
+                if (random_char + checksum > TARGET)
+                        continue;
+                
+		checksum += (int) random_char;
+                printf("%c", random_char);
+        }
+	printf("%c", TARGET - checksum);
+
 	return (0);
 }

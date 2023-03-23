@@ -1,24 +1,24 @@
 #include "main.h"
+
 /**
- * print_sign - a function that prints the sign of a number
- * @n: number input
- * Return: 1 prints '+' if n > 0, 0 prints '0' if n = 0, -1 prints '-' if n < 0
+ * print_sign - writes the character c to stdout
+ * @n: The character to test
+ *
+ * Return: 1 If c is alpha.
+ * Otherwise, 0 is returned.
+ * Or -1
  */
 int print_sign(int n)
 {
 	if (n > 0)
 	{
-		_putchar ('+');
+		_putchar('+');
 		return (1);
-	}
-	else if (n == 0)
+	} else if (n == 0)
 	{
-		_putchar ('0');
+		_putchar('0');
 		return (0);
 	}
-	else
-	{
-		_putchar ('-');
-		return (-1);
-	}
+	_putchar('-');
+	return (-1);
 }

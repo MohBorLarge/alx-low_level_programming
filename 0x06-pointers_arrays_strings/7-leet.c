@@ -1,25 +1,24 @@
 #include "main.h"
 
 /**
- * leet - Encodes a string in leet
- * @str: String to be encoded
- * Return: Always 0.
+ * leet - converts a string into leet speak
+ * @targ: the string to be converted into leet speak
+ * Return: a string's pointer
  */
-char *leet(char *str)
+char *leet(char *targ)
 {
-	int i = 0, k;
-	char s[] = "aAeEoOtTlL";
-	char s1[] = "4433007711";
+	int x = 0, num[5] = {4, 3, 0, 1, 7}, y = 0;
+	char alpha[10] = "AaEeOoLlTt";
 
-	for (; str[i] != '\0'; i++)
+	for (; targ[x]; x++)
 	{
-		for (k = 0; k <= 9; k++)
+		for (y = 0; (targ[x] != alpha[y] && y < 10); y++)
+			;
+		if (targ[x] == alpha[y])
 		{
-			if (s[k] == str[i])
-			{
-				str[i] = s1[k];
-			}
+			y /= 2;
+			targ[x] = (num[y] + '0');
 		}
 	}
-	return (str);
+	return (targ);
 }

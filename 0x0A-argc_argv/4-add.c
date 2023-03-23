@@ -1,52 +1,29 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include "main.h"
 /**
-* is_digit - validates if the character is a number
-* @str: the pointer to direct
-* Return: Result
-*/
-
-int is_digit(char *str)
-{
-	if (*str == '\0')
-	{
-		return (1);
-	}
-	return ((*str >= '0' && *str <= '9') && is_digit(str + 1));
-}
-
-/**
-* main - print product of multiplication of two arguments
-* @argc: counter of arguments
-* @argv: arguments
-* Return: (Success)
-*/
-
+ * main - Entry Point
+ * @argc: arguments
+ * @argv: array pointing to arguments
+ * Return: 0
+ */
 int main(int argc, char *argv[])
 {
 	int i, sum = 0;
 
-	if (argc > 1)
+	if (argc < 1)
+		return (0);
+
+	for (i = 1; i < argc; i++)
 	{
-		for (i = 1; i < argc; i++)
+		if (!atoi(argv[i]))
 		{
-			if (!is_digit(argv[i]))
-			{
-				printf("Error\n");
-				return (1);
-			}
-			else
-			{
-				sum += atoi(argv[i]);
-			}
+			printf("%s\n", "Error");
+			return (1);
 		}
-		printf("%d\n", sum);
-		return (0);
+		sum += atoi(argv[i]);
 	}
-	else
-	{
-		printf("0\n");
-		return (0);
-	}
+	printf("%d\n", sum);
+
+	return (0);
 }

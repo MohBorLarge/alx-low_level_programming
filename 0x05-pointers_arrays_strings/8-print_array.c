@@ -1,30 +1,20 @@
 #include "main.h"
-#include "stdio.h"
-
+#include <stdio.h>
 /**
-* print_array - Print array upto n elements
-* @a: Array to be read from
-* @n: Number of elements to be read
-* Return: Always 0.
-*/
+ * print_array - prints n elements of an array of integers
+ *@a: array being tested
+ *@n: number of elements in the array
+ */
 
 void print_array(int *a, int n)
 {
-	int i;
+	int len;
 
-	if (n > 0)
+	for (len = 0; len < n; len++)
 	{
-		for (i = 0 ; n > i; i++)
-		{
-			if (i != n - 1)
-			{
-				printf("%d, ", a[i]);
-			}
-			else
-			{
-				printf("%d", a[i]);
-			}
-		}
+		printf("%d", a[len]);
+		if (len != n - 1)
+			printf(", ");
 	}
 	printf("\n");
 }

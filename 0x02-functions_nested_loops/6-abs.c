@@ -1,10 +1,16 @@
 #include "main.h"
+
 /**
- * _abs - a function that computes the absolute value of an integer
- * @ab: integer input
- * Return: absolute value of ab
+ * _abs - writes the character c to stdout
+ * @n: The character to test
+ *
+ * Return: n absolute.
  */
-int _abs(int ab)
+int _abs(int n)
 {
-	return (ab * ((ab > 0) - (ab < 0)));
+	if (n > 0)
+	{
+		return (n);
+	}
+	return (n * -1);
 }

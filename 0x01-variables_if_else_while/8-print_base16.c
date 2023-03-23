@@ -1,24 +1,23 @@
 #include <stdio.h>
-#include <unistd.h>
+#include <stdlib.h>
+#include <time.h>
+
 /**
  * main - Entry point
- * Description: Print base 16 numbers
- * Return: Always 0 (success)
+ *
+ * Return: Always 0 (Success)
  */
+
 int main(void)
 {
-	char c;
-	char d = '0';
+	int d;
+	char low;
 
-	while (d <= '9')
-	{
+	for (d = '0'; d <= '9'; d++)
 		putchar(d);
-		d++;
-	}
-	for (c = 'a'; c <= 'f'; c++)
-	{
-		putchar(c);
-	}
+	for (low = 'a'; low <= 'f'; low++)
+		putchar(low);
 	putchar('\n');
+
 	return (0);
 }

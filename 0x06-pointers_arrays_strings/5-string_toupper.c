@@ -1,16 +1,21 @@
 #include "main.h"
-
 /**
- * string_toupper - this fuction print in uppercase whit ascii code.
- * @str: is the string to comparate.
- * Return: i.
+ * string_toupper - Changes all lowercase letters to uppercase
+ * @c: Pointer to first element
+ *
+ * Return: c
  */
-char *string_toupper(char *str)
+char *string_toupper(char *c)
 {
-	char *i = str;
+	int x = 0;
 
-	for (; *str != '\0'; str++)
-		if (*str >= 97 && *str <= 122)
-			*str -= 32;
-	return (i);
+	while (c[x] != '\0')
+	{
+		if (c[x] >= 'a' && c[x] <= 'z')
+		{
+			c[x] = c[x] - 'a' + 'A';
+		}
+		x++;
+	}
+	return (c);
 }

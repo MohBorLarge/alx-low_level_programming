@@ -1,34 +1,34 @@
 #include "main.h"
-/**
- * c_2_upper - fuction capitalize the strings.
- * @letter: is the string to capitalize.
- */
-void c_2_upper(char *letter)
-{
-	if (*letter >= 'a' && *letter <= 'z')
-		*letter -= 32;
-}
-/**
- * cap_string - function that capitalizes all words of a string.
- * @str: is the string to capitalize.
- * Return: str.
- */
-char *cap_string(char *str)
-{
-	int i, j;
-	char separators[] = " ,;.!?(){}\"\t\n";
 
-	for (i = 0; str[i] != '\0'; i++)
-		for (j = 0; separators[j] != '\0'; j++)
-			if (i == 0)
+/**
+ * cap_string - capitalize every word in a string
+ * @targ: string input to have words of capitalized
+ * Return: the string with capitalized words
+ */
+char *cap_string(char *targ)
+{
+	char *sep = " \t\n,;.!?\"(){}";
+	int i = 0, j = 0, cap = 1, k = 0;
+
+	for (; targ[i]; i++)
+		for (; j < i; j++)
+		{
+			if (targ[j] >= 'A' && targ[j] <= 'Z')
+				cap = 0;
+			if ((targ[j] >= 'a' && targ[j] <= 'z') && cap == 1)
 			{
-				c_2_upper(&str[i]);
-				break;
+				targ[j] = ((targ[j] - 'a') + 'A');
+				cap = 0;
 			}
-			else if (str[i - 1] == separators[j])
+			for (k = 0; sep[k]; k++)
 			{
-				c_2_upper(&str[i]);
-				break;
+				if (targ[j] == sep[k])
+				{
+					cap = 1;
+					if (!(targ[j + 1] <= 'z' && targ[j + 1] >= 'a'))
+						cap = 0;
+				}
 			}
-	return (str);
+		}
+	return (targ);
 }
